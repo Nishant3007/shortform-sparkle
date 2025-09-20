@@ -1,42 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ShortFormVid Design System - Professional Video Production Brand */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand Colors - Professional video production palette */
+    --background: 210 11% 7%;
+    --foreground: 0 0% 98%;
+    
+    /* Video Production Brand Colors */
+    --brand-orange: 22 100% 62%;
+    --brand-orange-light: 28 100% 70%;
+    --brand-orange-dark: 16 100% 50%;
+    
+    /* Accent Colors */
+    --accent-blue: 217 91% 60%;
+    --accent-purple: 262 83% 58%;
+    --accent-green: 142 71% 45%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Core System Colors */
+    --card: 210 11% 9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 11% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 22 100% 62%;
+    --primary-foreground: 210 11% 7%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 11% 13%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 11% 7%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 11% 20%;
+    --input: 210 11% 15%;
+    --ring: 22 100% 62%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-orange-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(210 11% 5%));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(210 11% 11%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-blue)), hsl(var(--accent-purple)));
+    
+    /* Shadows */
+    --shadow-brand: 0 10px 40px -10px hsl(var(--brand-orange) / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(210 11% 4% / 0.4);
+    --shadow-glow: 0 0 40px hsl(var(--brand-orange) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +83,7 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Dark theme already defined as default */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +101,69 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(210 11% 5%));
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-space-grotesk;
+  }
+}
+
+@layer components {
+  /* Brand Button Variants */
+  .btn-brand {
+    @apply bg-gradient-to-r from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange-light))] 
+           text-[hsl(var(--primary-foreground))] font-semibold px-8 py-4 rounded-xl
+           shadow-[var(--shadow-brand)] hover:shadow-[var(--shadow-glow)] 
+           transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] 
+           border-2 border-[hsl(var(--border))] font-semibold px-8 py-4 rounded-xl
+           hover:bg-[hsl(var(--accent))] hover:border-[hsl(var(--accent))]
+           transform hover:scale-105 transition-all duration-300;
+  }
+  
+  /* Card Variants */
+  .card-glass {
+    @apply bg-gradient-to-br from-[hsl(var(--card))] to-[hsl(210_11%_11%)]
+           backdrop-blur-xl border border-[hsl(var(--border))] rounded-2xl
+           shadow-[var(--shadow-card)];
+  }
+  
+  .card-feature {
+    @apply card-glass p-8 hover:shadow-[var(--shadow-brand)] 
+           transform hover:scale-105 transition-all duration-300;
+  }
+  
+  /* Text Variants */
+  .text-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange-light))]
+           bg-clip-text text-transparent;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--brand-orange) / 0.5);
+  }
+  
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
