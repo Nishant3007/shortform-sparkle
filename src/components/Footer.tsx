@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Clock, Phone } from "lucide-react";
+import footerLogo from "@/assets/shortformvid-footer-logo.webp";
 
 const Footer = () => {
   return (
@@ -49,7 +50,11 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="md:col-span-2">
-              <div className="text-2xl font-bold text-gradient mb-4">ShortFormVid</div>
+              <img 
+                src={footerLogo} 
+                alt="ShortFormVid" 
+                className="h-8 w-auto mb-4"
+              />
               <p className="text-muted-foreground text-sm max-w-md">
                 Professional video editing subscriptions that help content creators and businesses scale their video content with fast turnarounds and unlimited revisions.
               </p>

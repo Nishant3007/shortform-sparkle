@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoImage from "@/assets/shortformvid-logo.png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-gradient">ShortFormVid</div>
+            <img 
+              src={logoImage} 
+              alt="ShortFormVid" 
+              className="h-8 w-auto"
+            />
           </div>
           
           {/* Desktop Navigation */}
